@@ -55,10 +55,21 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
 
-        <AudioPlayer audio={this.state.blobURL}/>
+        {this.state.isRecording ?
+        null
+
+       : <div>
+        {this.state.blobURL === "" ?
+        null
+        : <AudioPlayer audio={this.state.blobURL}/> }
+        </div> }
 
           {!this.state.isRecording ? <button className="Button" onClick={this.start} disabled={this.state.isRecording}>Record</button> : null }
           {this.state.isRecording ? <button className="Button" onClick={this.stop} disabled={!this.state.isRecording}>Stop</button> : null }
+
+          {this.state.isRecording ? null :
+          <button className="Button">Send</button> }
+
           
 
 
